@@ -16,7 +16,8 @@ public class ElegantDiamond {
         while(caseNumber++ < T) {
             final int K = scanner.nextInt();
 
-            int maxExpansion = 0;
+            int maxExpansionLeft = 0;
+            int maxExpansionRight = 0;
 
             for(int i = 1; i <= 2*K-1; i++){
                 int numElements = i <= K ? i : 2*K-i;
@@ -24,13 +25,16 @@ public class ElegantDiamond {
                 for(int j = 0; j < numElements; j++){
                     elements[j] = scanner.nextInt();
                 }
-                final int currExpansion = findMinExpansion(elements);
-                if(currExpansion > maxExpansion)maxExpansion = currExpansion;
+                final int currExpansionLeft = findMinExpansionAppendLeft(elements);
+                final int currExpansionRight = findMinExpansionAppendRight(elements);
+                if(currExpansionLeft > maxExpansionLeft)maxExpansionLeft = currExpansionLeft;
+                if(currExpansionRight > maxExpansionRight)maxExpansionRight = currExpansionRight;
             }
 
-            int cost = kElementsAmount[K+maxExpansion] - kElementsAmount[K];
+            int costLeft = kElementsAmount[K+maxExpansionLeft] - kElementsAmount[K];
+            int costRight = kElementsAmount[K+maxExpansionRight] - kElementsAmount[K];
 
-            System.out.println(String.format("Case #%d: %d", caseNumber, cost));
+            System.out.println(String.format("Case #%d: %d", caseNumber, Math.min(costLeft, costRight)));
         }
 
     }
