@@ -1,11 +1,10 @@
 package gcj2016;
 
-import com.google.common.base.Joiner;
-import com.google.common.collect.Lists;
-
-import java.util.LinkedList;
 import java.util.Scanner;
 
+/**
+ * Small correct
+ */
 public class Fractiles {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
